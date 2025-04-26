@@ -53,11 +53,11 @@ const provideStockRecommendationsPrompt = ai.definePrompt({
   input: {
     schema: z.object({
       stockData: z.object({
-        ticker: z.string(),
-        currentPrice: z.number(),
-        lastUpdated: z.string(),
+        ticker: z.string().optional(),
+        currentPrice: z.number().optional(),
+        lastUpdated: z.string().optional(),
         notes: z.string().optional(),
-      }),
+      }).optional(),
       investmentAmount: z.number(),
       riskTolerance: z.string(),
       tradingGoals: z.string(),
@@ -103,3 +103,4 @@ const provideStockRecommendationsFlow = ai.defineFlow<
     return output!;
   }
 );
+
