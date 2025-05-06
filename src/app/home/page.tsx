@@ -8,38 +8,6 @@ import Image from 'next/image';
 const HomePage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
-            <Link href="/home" className="flex items-center">
-              <TrendingUp className="h-8 w-8 text-accent" />
-              <span className="ml-3 text-2xl font-bold text-foreground">TradeWise</span>
-            </Link>
-            <nav className="hidden md:flex space-x-8 items-center">
-              <Link href="/home#services" className="text-muted-foreground hover:text-accent transition-colors">
-                Services
-              </Link>
-              <Link href="/home#about" className="text-muted-foreground hover:text-accent transition-colors">
-                About Us
-              </Link>
-              <Link href="/stock-analysis" className="text-muted-foreground hover:text-accent transition-colors">
-                Stock Analysis
-              </Link>
-              <Link href="/chatbot">
-                <Button variant="ghost" className="text-accent hover:text-accent-foreground hover:bg-accent">
-                  AI Chatbot
-                  <Bot className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </nav>
-            <div className="md:hidden">
-              {/* Mobile Menu Button (optional) */}
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="relative py-24 sm:py-32 lg:py-40 bg-gradient-to-br from-accent/10 via-background to-background">
         <div className="absolute inset-0 overflow-hidden">
@@ -217,3 +185,4 @@ const GridPattern = () => (
     <rect width="100%" height="100%" strokeWidth="0" fill="url(#hero-pattern)" />
   </svg>
 );
+

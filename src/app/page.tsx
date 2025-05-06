@@ -6,14 +6,8 @@ import { ArrowRight, BotMessageSquare, LineChart } from "lucide-react";
 export default function FrontPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground p-6">
-      <header className="absolute top-0 left-0 right-0 p-6 flex justify-end">
-        <Link href="/home">
-          <Button variant="outline" className="text-sm">
-            View Full Homepage <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </Link>
-      </header>
-      <main className="text-center space-y-12">
+      {/* The global header is now in layout.tsx, so no local header needed here for just a link to /home */}
+      <main className="text-center space-y-12 mt-16"> {/* Added margin-top to avoid overlap with fixed global header */}
         <div className="space-y-4">
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
             Welcome to TradeWise
@@ -53,6 +47,11 @@ export default function FrontPage() {
             </Button>
           </Link>
         </div>
+         <Link href="/home">
+          <Button variant="outline" className="text-sm mt-8">
+            Explore Full Homepage <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </Link>
       </main>
       <footer className="absolute bottom-0 left-0 right-0 p-6 text-center text-sm text-muted-foreground">
         &copy; {new Date().getFullYear()} TradeWise. All rights reserved.
@@ -60,3 +59,4 @@ export default function FrontPage() {
     </div>
   );
 }
+
