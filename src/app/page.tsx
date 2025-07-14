@@ -1,4 +1,6 @@
 
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BotMessageSquare, LineChart } from "lucide-react";
