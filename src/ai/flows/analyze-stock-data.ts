@@ -39,12 +39,20 @@ const analyzeStockDataPrompt = ai.definePrompt({
       recommendation: z.string().describe('The buy/sell recommendation for the stock based on the analyzed data.'),
     }),
   },
-  prompt: `You are a stock market expert. Analyze the following stock data and provide a buy/sell recommendation.
+  prompt: `You are a professional stock market analyst with expertise in fundamental and technical analysis. Analyze the following stock data and provide detailed buy/sell recommendations.
 
 Stock Data 1: {{{stockData1}}}
 Stock Data 2: {{{stockData2}}}
 
-Based on this information, what is your recommendation?`,
+Please provide a comprehensive analysis including:
+1. Individual stock analysis for each stock
+2. Comparative analysis between the two stocks
+3. Specific buy/sell/hold recommendations with reasoning
+4. Risk assessment and potential catalysts
+5. Price targets if applicable
+6. Portfolio allocation suggestions
+
+Be specific about entry points, stop losses, and time horizons. Consider market conditions, sector trends, and company fundamentals in your analysis.`,
 });
 
 const analyzeStockDataFlow = ai.defineFlow<

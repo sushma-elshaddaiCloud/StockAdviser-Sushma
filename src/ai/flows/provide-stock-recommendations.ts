@@ -55,6 +55,15 @@ const provideStockRecommendationsPrompt = ai.definePrompt({
       stockData: z.object({
         ticker: z.string().optional(),
         currentPrice: z.number().optional(),
+        marketCap: z.string().optional(),
+        peRatio: z.number().optional(),
+        dayChange: z.number().optional(),
+        dayChangePercent: z.number().optional(),
+        volume: z.number().optional(),
+        fiftyTwoWeekHigh: z.number().optional(),
+        fiftyTwoWeekLow: z.number().optional(),
+        sector: z.string().optional(),
+        industry: z.string().optional(),
         lastUpdated: z.string().optional(),
         notes: z.string().optional(),
       }).optional(),
@@ -70,19 +79,37 @@ const provideStockRecommendationsPrompt = ai.definePrompt({
       ),
     }),
   },
-  prompt: `You are a stock market expert providing investment advice based on the user's input and current stock data.  Consider the user's risk tolerance and trading goals when making your recommendation.  If the user has low risk tolerance, recommend safer investments.  If the user has high risk tolerance, recommend more aggressive investments.
+  prompt: `You are a professional financial advisor and stock market analyst providing personalized investment advice. Analyze the provided stock data and user preferences to deliver actionable recommendations.
 
 Stock Data:
 Ticker: {{{stockData.ticker}}}
-Current Price: {{{stockData.currentPrice}}}
-Last Updated: {{{stockData.lastUpdated}}}
-Notes: {{{stockData.notes}}}
-
-Investment Amount: {{{investmentAmount}}}
+Market Cap: {{{stockData.marketCap}}}
+P/E Ratio: {{{stockData.peRatio}}}
+Day Change: ${{{stockData.dayChange}}} ({{{stockData.dayChangePercent}}}%)
+Volume: {{{stockData.volume}}}
+52-Week High: ${{{stockData.fiftyTwoWeekHigh}}}
+52-Week Low: ${{{stockData.fiftyTwoWeekLow}}}
+Sector: {{{stockData.sector}}}
 Risk Tolerance: {{{riskTolerance}}}
 Trading Goals: {{{tradingGoals}}}
 
-Recommendation:`,
+Please provide a comprehensive investment recommendation that includes:
+
+1. **Stock Analysis**: Evaluate the company's current valuation, financial health, and market position
+2. **Buy/Sell/Hold Recommendation**: Clear action with specific reasoning
+3. **Risk Assessment**: How this investment aligns with the user's risk tolerance
+4. **Position Sizing**: Suggested allocation based on the investment amount
+5. **Entry Strategy**: Optimal entry points and timing considerations
+6. **Exit Strategy**: Price targets, stop losses, and time horizon
+7. **Alternative Considerations**: Other stocks or sectors to consider
+8. **Market Context**: How current market conditions affect this recommendation
+
+Tailor your advice specifically to:
+- Investment Amount: ${{{investmentAmount}}}
+- Risk Tolerance: {{{riskTolerance}}}
+- Trading Goals: {{{tradingGoals}}}
+
+Be specific, actionable, and include concrete numbers where appropriate. Consider both fundamental and technical factors in your analysis.`,
 });
 
 const provideStockRecommendationsFlow = ai.defineFlow<

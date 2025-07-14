@@ -73,7 +73,7 @@ const StockAnalysisPage = () => {
               <Input
                 id="url1"
                 type="url"
-                placeholder="e.g., https://example.com/stock1-data.json"
+                placeholder="e.g., AAPL, GOOGL, or https://finance.yahoo.com/quote/AAPL"
                 value={url1}
                 onChange={(e) => setUrl1(e.target.value)}
                 className="text-base"
@@ -87,7 +87,7 @@ const StockAnalysisPage = () => {
               <Input
                 id="url2"
                 type="url"
-                placeholder="e.g., https://example.com/stock2-data.json"
+                placeholder="e.g., MSFT, TSLA, or https://finance.yahoo.com/quote/MSFT"
                 value={url2}
                 onChange={(e) => setUrl2(e.target.value)}
                 className="text-base"

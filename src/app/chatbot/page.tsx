@@ -148,7 +148,7 @@ const ChatbotPage = () => {
               <label htmlFor="url1" className="block text-sm font-medium text-muted-foreground mb-1">Stock Data URL 1</label>
               <Input
                 id="url1"
-                placeholder="Enter URL for stock data (e.g., https://example.com/stock1-data)"
+                placeholder="Enter ticker or URL (e.g., AAPL, GOOGL, or https://finance.yahoo.com/quote/AAPL)"
                 value={url1}
                 onChange={(e) => setUrl1(e.target.value)}
                 className="mb-2"
@@ -158,7 +158,7 @@ const ChatbotPage = () => {
               <label htmlFor="url2" className="block text-sm font-medium text-muted-foreground mb-1">Stock Data URL 2</label>
               <Input
                 id="url2"
-                placeholder="Enter URL for stock data (e.g., https://example.com/stock2-data)"
+                placeholder="Enter ticker or URL (e.g., MSFT, TSLA, or https://finance.yahoo.com/quote/MSFT)"
                 value={url2}
                 onChange={(e) => setUrl2(e.target.value)}
                 className="mb-2"
