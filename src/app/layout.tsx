@@ -4,6 +4,8 @@ import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/layout/header';
+import { ClerkProvider } from '@clerk/nextjs';
+import ChatbotWidget from '@/components/chatbot-widget';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,15 +28,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased gradient-background`}>
-        <Header />
-        <main className="pt-20"> {/* Add padding top to account for fixed header height */}
-          {children}
-        </main>
-        <Toaster />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased gradient-background`}>
+          <Header />
+          <main className="pt-20"> {/* Add padding top to account for fixed header height */}
+            {children}
+          </main>
+          <ChatbotWidget />
+          <Toaster />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
 

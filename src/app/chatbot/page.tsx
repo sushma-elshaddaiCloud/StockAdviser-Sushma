@@ -9,6 +9,8 @@ import {analyzeStockData} from "@/ai/flows/analyze-stock-data";
 import {useToast} from "@/hooks/use-toast";
 import {provideStockRecommendations} from "@/ai/flows/provide-stock-recommendations";
 import { Input } from '@/components/ui/input';
+import { useAuth } from '@clerk/nextjs';
+import { redirect } from 'next/navigation';
 
 interface Message {
   id: string;
@@ -17,6 +19,7 @@ interface Message {
 }
 
 const ChatbotPage = () => {
+  const { isSignedIn, isLoaded } = useAuth();
   const [url1, setUrl1] = useState('');
   const [url2, setUrl2] = useState('');
   const [analysisRecommendation, setAnalysisRecommendation] = useState<string | null>(null);
@@ -29,6 +32,22 @@ const ChatbotPage = () => {
   // Placeholder for actual stock data fetching logic
   const [currentStockDataUrl, setCurrentStockDataUrl] = useState('');
 
+  // Redirect if not signed in
+  if (isLoaded && !isSignedIn) {
+    redirect('/');
+  }
+
+  // Show loading while checking auth
+  if (!isLoaded) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-accent"></div>
+          <p className="mt-4 text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   const handleAnalyze = useCallback(async () => {
     if (!url1 || !url2) {
