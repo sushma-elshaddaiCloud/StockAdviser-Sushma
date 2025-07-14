@@ -85,10 +85,10 @@ Stock Data:
 Ticker: {{{stockData.ticker}}}
 Market Cap: {{{stockData.marketCap}}}
 P/E Ratio: {{{stockData.peRatio}}}
-Day Change: ${{{stockData.dayChange}}} ({{{stockData.dayChangePercent}}}%)
+Day Change: {{{stockData.dayChange}}} ({{{stockData.dayChangePercent}}}%)
 Volume: {{{stockData.volume}}}
-52-Week High: ${{{stockData.fiftyTwoWeekHigh}}}
-52-Week Low: ${{{stockData.fiftyTwoWeekLow}}}
+52-Week High: {{{stockData.fiftyTwoWeekHigh}}}
+52-Week Low: {{{stockData.fiftyTwoWeekLow}}}
 Sector: {{{stockData.sector}}}
 Risk Tolerance: {{{riskTolerance}}}
 Trading Goals: {{{tradingGoals}}}
@@ -105,7 +105,7 @@ Please provide a comprehensive investment recommendation that includes:
 8. **Market Context**: How current market conditions affect this recommendation
 
 Tailor your advice specifically to:
-- Investment Amount: ${{{investmentAmount}}}
+- Investment Amount: {{{investmentAmount}}}
 - Risk Tolerance: {{{riskTolerance}}}
 - Trading Goals: {{{tradingGoals}}}
 
