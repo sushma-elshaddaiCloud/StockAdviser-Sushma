@@ -9,34 +9,14 @@ import { analyzeStockData, AnalyzeStockDataOutput } from "@/ai/flows/analyze-sto
 import { useToast } from "@/hooks/use-toast";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from 'lucide-react';
-import { useAuth } from '@clerk/nextjs';
-import { redirect } from 'next/navigation';
 
 const StockAnalysisPage = () => {
-  const { isSignedIn, isLoaded } = useAuth();
   const [url1, setUrl1] = useState('');
   const [url2, setUrl2] = useState('');
   const [analysisResult, setAnalysisResult] = useState<AnalyzeStockDataOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
-
-  // Redirect if not signed in
-  if (isLoaded && !isSignedIn) {
-    redirect('/');
-  }
-
-  // Show loading while checking auth
-  if (!isLoaded) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-accent"></div>
-          <p className="mt-4 text-muted-foreground">Loading...</p>
-        </div>
-      </div>
-    );
-  }
 
   const handleAnalyze = useCallback(async () => {
     if (!url1 || !url2) {
