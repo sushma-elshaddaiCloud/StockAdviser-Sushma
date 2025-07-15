@@ -1,8 +1,12 @@
-import { authMiddleware } from "@clerk/nextjs";
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-export default authMiddleware({
-  publicRoutes: ["/", "/home", "/sign-in", "/sign-up"],
-  ignoredRoutes: ["/api/webhook"]
+const isProtectedRoute = createRouteMatcher([
+  '/stock-analysis(.*)',
+  '/chatbot(.*)',
+]);
+
+export default clerkMiddleware((auth, req) => {
+  if (isProtectedRoute(req)) auth().protect();
 });
 
 export const config = {
